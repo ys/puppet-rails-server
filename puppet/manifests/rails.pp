@@ -1,4 +1,4 @@
-$application = 'test'
+$application = 'testapp'
 $home = "/home/${application}"
 $ruby_version = "1.9.3-p392"
 
@@ -10,8 +10,8 @@ user { $application:
   ensure   => present,
   gid      => $application,
   home     => $home,
-  password => '$1$k5.UExnX$DIiUq/tcx8Uhj73FOzki8/',
   require  => Group[$application],
+  shell    => "/bin/bash",
 }
 
 file {
@@ -53,27 +53,21 @@ rbenv::compile { $ruby_version:
   global => true,
 }
 
-# yumrepo {
-#   "nginx":
-#     baseurl  => 'http://nginx.org/packages/centos/6/x86_64/',
-#     gpgcheck => 0,
-#     enabled  => 1;
-#
-#   "extra":
-#     baseurl    => 'http://mirror.centos.org/centos/6/extras/x86_64/',
-#     gpgcheck   => 1,
-#     gpgkey     => 'http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5',
-# }
+package { 'nodejs':
+  ensure => present,
+}
 
-node default {
-  class { 'nginx':
-    # require => Yumrepo['nginx'],
-  }
+class { 'nginx': }
 
-  nginx::resource::upstream { 'proxypass':
-    ensure  => present,
-    members => [
-      "unix:/${home}/apps/${application}/current/tmp/puma.sock",
-    ],
-  }
+nginx::resource::vhost { 'localhost':
+  ensure   => present,
+  proxy  => "http://${application}",
+}
+
+
+nginx::resource::upstream { $application:
+  ensure  => present,
+  members => [
+    "unix:${home}/apps/${application}/tmp/puma.sock",
+  ],
 }

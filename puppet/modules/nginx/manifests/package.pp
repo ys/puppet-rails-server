@@ -17,9 +17,15 @@ class nginx::package {
   anchor { 'nginx::package::begin': }
   anchor { 'nginx::package::end': }
 
-  case $operatingsystem {
-    centos,fedora,rhel: {
+  case $::operatingsystem {
+    centos,fedora,rhel,redhat,scientific: {
       class { 'nginx::package::redhat':
+        require => Anchor['nginx::package::begin'],
+        before  => Anchor['nginx::package::end'],
+      }
+    }
+    amazon: {
+      class { 'nginx::package::amazon':
         require => Anchor['nginx::package::begin'],
         before  => Anchor['nginx::package::end'],
       }

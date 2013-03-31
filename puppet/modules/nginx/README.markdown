@@ -1,6 +1,6 @@
 # NGINX Module
 
-James Fryman <jamison@puppetlabs.com>
+James Fryman <james@frymanet.com>
 
 This module manages NGINX from within Puppet.
 
@@ -18,7 +18,7 @@ Setup a new virtual host
 
 <pre>
     node default {
-      class { 'mcollective': }
+      class { 'nginx': }
       nginx::resource::vhost { 'www.puppetlabs.com':
         ensure   => present,
         www_root => '/var/www/www.puppetlabs.com',
@@ -27,13 +27,12 @@ Setup a new virtual host
 </pre>
 
 Add a Proxy Server(s)
-
 <pre>
    node default {
-     class { 'mcollective': }
-	 nginx::resource::upstream { 'puppet_rack_app':
-	   ensure  => present,
-	   members => [
+     class { 'nginx': }
+     nginx::resource::upstream { 'puppet_rack_app':
+       ensure  => present,
+       members => [
          'localhost:3000', 
          'localhost:3001',
          'localhost:3002',
