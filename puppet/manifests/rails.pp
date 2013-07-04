@@ -1,6 +1,6 @@
-$application = 'testapp'
+$application = 'pragprog_magazines'
 $home = "/home/${application}"
-$ruby_version = "1.9.3-p392"
+$ruby_version = "2.0.0-p195"
 
 group { $application:
   ensure => present,
@@ -64,10 +64,9 @@ nginx::resource::vhost { 'localhost':
   proxy  => "http://${application}",
 }
 
-
 nginx::resource::upstream { $application:
   ensure  => present,
   members => [
-    "unix:${home}/apps/${application}/tmp/puma.sock",
+    "unix:${home}/apps/${application}/tmp/unicorn.sock",
   ],
 }
