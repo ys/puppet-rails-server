@@ -1,6 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
+    alup/rbenv (1.2.0)
     puppetlabs/stdlib (4.1.0)
 
 GIT
@@ -18,15 +19,8 @@ GIT
   specs:
     stdlib (4.1.0)
 
-GIT
-  remote: https://github.com/alup/puppet-rbenv.git
-  ref: master
-  sha: 911cde54dde7286f66eb8398843595aaa66ad079
-  specs:
-    rbenv (1.2.0)
-
 DEPENDENCIES
+  alup/rbenv (>= 0)
   nginx (>= 0)
-  rbenv (>= 0)
   stdlib (>= 0)
 

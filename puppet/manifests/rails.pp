@@ -2,6 +2,8 @@ $application = 'pragprog_magazines'
 $home = "/home/${application}"
 $ruby_version = "2.0.0-p195"
 
+Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+
 group { $application:
   ensure => present,
 }
