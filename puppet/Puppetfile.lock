@@ -2,7 +2,12 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     alup/rbenv (1.2.0)
+    maestrodev/wget (1.2.0)
+    puppetlabs/gcc (0.0.3)
     puppetlabs/stdlib (4.1.0)
+    thomasvandoren/redis (0.0.9)
+      maestrodev/wget (>= 0.0.0)
+      puppetlabs/gcc (>= 0.0.0)
 
 GIT
   remote: git://github.com/jfryman/puppet-nginx.git
@@ -23,4 +28,5 @@ DEPENDENCIES
   alup/rbenv (>= 0)
   nginx (>= 0)
   stdlib (>= 0)
+  thomasvandoren/redis (>= 0)
 

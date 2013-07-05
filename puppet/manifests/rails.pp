@@ -72,3 +72,7 @@ nginx::resource::upstream { 'unicorn_server' :
     "unix:${home}/apps/shared/unicorn.sock",
   ],
 }
+
+class { 'redis':
+  version => '2.6.14',
+  }
