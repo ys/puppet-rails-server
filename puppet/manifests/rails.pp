@@ -59,7 +59,7 @@ package { 'nodejs':
 
 class { 'nginx': }
 
-nginx::resource::vhost { 'localhost':
+nginx::resource::vhost { 'narwhal.yannick.io' :
   ensure   => present,
   proxy  => "http://${application}",
 }
@@ -67,6 +67,6 @@ nginx::resource::vhost { 'localhost':
 nginx::resource::upstream { $application:
   ensure  => present,
   members => [
-    "unix:${home}/apps/${application}/tmp/unicorn.sock",
+    "unix:${home}/apps/shared/unicorn.sock",
   ],
 }
