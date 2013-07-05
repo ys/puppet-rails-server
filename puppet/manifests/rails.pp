@@ -61,10 +61,10 @@ class { 'nginx': }
 
 nginx::resource::vhost { 'narwhal.yannick.io' :
   ensure   => present,
-  proxy  => "http://${application}",
+  proxy  => "http://unicorn_server",
 }
 
-nginx::resource::upstream { $application:
+nginx::resource::upstream { 'unicorn_server' :
   ensure  => present,
   members => [
     "unix:${home}/apps/shared/unicorn.sock",
