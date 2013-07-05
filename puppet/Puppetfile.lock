@@ -1,0 +1,32 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    puppetlabs/stdlib (4.1.0)
+
+GIT
+  remote: git://github.com/jfryman/puppet-nginx.git
+  ref: master
+  sha: ca7d2dbd1d27fdbb0e2bbdda6479431af2617fd0
+  specs:
+    nginx (0.0.1)
+      puppetlabs/stdlib (>= 0.1.6)
+
+GIT
+  remote: git://github.com/puppetlabs/puppetlabs-stdlib.git
+  ref: master
+  sha: 4d2558f383e18bbe322dd0feb073555491216ab4
+  specs:
+    stdlib (4.1.0)
+
+GIT
+  remote: https://github.com/alup/puppet-rbenv.git
+  ref: master
+  sha: 911cde54dde7286f66eb8398843595aaa66ad079
+  specs:
+    rbenv (1.2.0)
+
+DEPENDENCIES
+  nginx (>= 0)
+  rbenv (>= 0)
+  stdlib (>= 0)
+
