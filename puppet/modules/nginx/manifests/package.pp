@@ -24,14 +24,14 @@ class nginx::package {
         before  => Anchor['nginx::package::end'],
       }
     }
-    amazon: {
+    amazon,gentoo: {
       class { 'nginx::package::amazon':
         require => Anchor['nginx::package::begin'],
         before  => Anchor['nginx::package::end'],
       }
     }
     debian,ubuntu: {
-      class { 'nginx::package::debian': 
+      class { 'nginx::package::debian':
         require => Anchor['nginx::package::begin'],
         before  => Anchor['nginx::package::end'],
       }
@@ -41,6 +41,9 @@ class nginx::package {
         require => Anchor['nginx::package::begin'],
         before  => Anchor['nginx::package::end'],
       }
+    }
+    default: {
+      fail("Module ${module_name} is not supported on ${::operatingsystem}")
     }
   }
 }
