@@ -59,7 +59,9 @@ package { 'nodejs':
   ensure => present,
 }
 
-class { 'nginx': }
+class { 'nginx':
+  worker_processes => 5,
+}
 
 nginx::resource::vhost { 'narwhal.yannick.io' :
   ensure   => present,
