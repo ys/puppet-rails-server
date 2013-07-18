@@ -1,4 +1,4 @@
-$application = 'pragprog_magazines'
+$application = 'frontback'
 $home = "/home/${application}"
 $ruby_version = "2.0.0-p195"
 
@@ -54,8 +54,10 @@ rbenv::compile { $ruby_version:
   home   => $home,
   global => true,
 }
-
-package { 'nodejs':
+package { 'imagemagick':
+  ensure => present, 
+}
+package { 'libv8-dev':
   ensure => present,
 }
 
@@ -71,7 +73,7 @@ nginx::resource::vhost { 'narwhal.yannick.io' :
 nginx::resource::upstream { 'unicorn_server' :
   ensure  => present,
   members => [
-    "unix:${home}/apps/shared/unicorn.sock",
+    "unix:${home}/shared/unicorn.sock",
   ],
 }
 
