@@ -6,6 +6,7 @@ FORGE
     maestrodev/wget (1.2.0)
     puppetlabs/gcc (0.0.3)
     puppetlabs/stdlib (4.1.0)
+    saz/memcached (2.1.0)
     thomasvandoren/redis (0.0.9)
       maestrodev/wget (>= 0.0.0)
       puppetlabs/gcc (>= 0.0.0)
@@ -29,6 +30,7 @@ DEPENDENCIES
   alup/rbenv (>= 0)
   ghoneycutt/imagemagick (>= 0)
   nginx (>= 0)
+  saz/memcached (>= 0)
   stdlib (>= 0)
   thomasvandoren/redis (>= 0)
 
