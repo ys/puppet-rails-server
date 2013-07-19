@@ -61,7 +61,7 @@ package { 'libmagickwand-dev':
   ensure => present,
 }
 package { 'imagemagick':
-  ensure => present, 
+  ensure => present,
 }
 package { 'libv8-dev':
   ensure => present,
@@ -82,6 +82,10 @@ nginx::resource::upstream { 'unicorn_server' :
   members => [
     "unix:${home}/shared/unicorn.sock",
   ],
+}
+
+class { 'memcached':
+  max_memory => '12%'
 }
 
 class { 'redis':
