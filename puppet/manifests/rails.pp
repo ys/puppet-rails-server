@@ -54,6 +54,12 @@ rbenv::compile { $ruby_version:
   home   => $home,
   global => true,
 }
+package { 'libmagickcore-dev':
+  ensure => present,
+}
+package { 'libmagickwand-dev':
+  ensure => present,
+}
 package { 'imagemagick':
   ensure => present, 
 }
@@ -62,7 +68,8 @@ package { 'libv8-dev':
 }
 
 class { 'nginx':
-  worker_processes => 5,
+  worker_processes => 2,
+  worker_connections => 4096,
 }
 
 nginx::resource::vhost { 'narwhal.yannick.io' :
