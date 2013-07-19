@@ -85,7 +85,8 @@ nginx::resource::upstream { 'unicorn_server' :
 }
 
 class { 'memcached':
-  max_memory => '12%'
+  max_memory => '12%',
+  listen_ip  => $ipaddress_eth0
 }
 
 class { 'redis':
